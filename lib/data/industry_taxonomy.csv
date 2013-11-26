@@ -1,0 +1,115 @@
+industry,industry_sector,emenuIndustryCode,emenuIndustry
+Aerospace & Defense,Aircraft & Parts,AIR  ,Aircraft/Aircraft Parts                           
+Aerospace & Defense,Airport & Ground Support Equipment,APG  ,Airport/Ground Support Eq.                        
+Aerospace & Defense,Aviation Services,AVS  ,Aviation Services                                 
+Aerospace & Defense,Defense Industry Equipment,DFN  ,Defense Industry Eq.                              
+Agribusiness,Agricultural Chemicals,AGC  ,Agricultural Chemicals                            
+Agribusiness,Agricultural Machinery & Equipment                    ,AGM  ,Agricultural Machinery & Eq.                      
+Agribusiness,Agricultural Products                             ,AGP  ,Agricultural Products                             
+Agribusiness,Agricultural Services                             ,AGS  ,Agricultural Services                             
+Agribusiness,Forestry & Woodworking Machinery                    ,FOR  ,Forestry/Woodworking Machinery                    
+Agribusiness,Lawn & Garden Equipment,LGE  ,Lawn/Garden Eq.                                   
+Agribusiness,Veterinary Medicine Equipment & Supplies                  ,VET  ,Veterinary Medicine Eq./Supplies                  
+"Arts, Entertainment & Media",Artwork,ARW  ,Artwork                                           
+"Arts, Entertainment & Media",Audio/Visual Equipment,AUV  ,Audio/Visual Eq.                                  
+"Arts, Entertainment & Media",Books & Periodicals,BOK  ,Books/Periodicals                                 
+"Arts, Entertainment & Media",Film & Video Production,FLM  ,Films/Videos                                      
+"Arts, Entertainment & Media",Musical Instruments,MUS  ,Musical Instruments                               
+"Arts, Entertainment & Media",Photographic Equipment,PHT  ,Photographic Eq.                                  
+"Arts, Entertainment & Media",Printing & Graphic Arts Equipment,PGA  ,Printing/Graphic Arts Eq.                         
+Automotive & Ground Transportation,"Automobiles, Light Trucks & Vans",AUT  ,Automobile/Light Truck/Vans                       
+Automotive & Ground Transportation,Automotive Parts & Service Equipment,APS  ,Automotive Parts/Services Eq.                     
+Automotive & Ground Transportation,Railroad Equipment,RRE  ,Railroad Eq.                                      
+Automotive & Ground Transportation,Transportation Services (Non-Aviation),TRN  ,Transportation Serv. (other than Aviation)        
+Automotive & Ground Transportation,"Trucks, Trailers & Busses",TRK  ,Trucks/Trailers/Buses                             
+Business & Professional Services,Advertising Services,ADV  ,Advertising Services                              
+Business & Professional Services,Architecture & Engineering Services,ACE  ,Architectural/Constr./Engineering SVC             
+Business & Professional Services,Education & Training Services,EDS  ,Education/Training Services                       
+Business & Professional Services,Employment Services,EMP  ,Employment Services                               
+Business & Professional Services,General Science & Technology,GST  ,General Science & Technology                      
+Business & Professional Services,General Services,GSV  ,General Services                                  
+Business & Professional Services,Management Consulting Services,MCS  ,Management Consulting Services                    
+Business & Professional Services,Operations & Maintenance Services,OMS  ,Operations/Maintenance Services                   
+Business & Professional Services,Trade Promotion Services,ZSV  ,Trade Promotion Services                          
+Chemicals,Chemical Production Machinery                     ,CHM  ,Chemical Production Machinery                     
+Chemicals,Industrial Chemicals                              ,ICH  ,Industrial Chemicals                              
+"Construction, Building & Heavy Equipment",Air Conditioning & Refrigeration Equipment,ACR  ,Air Conditioning/Refrigeration Eq.                
+"Construction, Building & Heavy Equipment",Building Products,BLD  ,Building Products                                 
+"Construction, Building & Heavy Equipment",Construction Equipment,CON  ,Construction Eq.                                  
+Consumer Goods,Consumer Electronics,CEL  ,Consumer Electronics                              
+Consumer Goods,Cosmetics & Toiletries,COS  ,Cosmetics/Toiletries                              
+Consumer Goods,Furniture,FUR  ,Furniture                                         
+Consumer Goods,Giftware,GFT  ,Giftware                                          
+Consumer Goods,Housewares,HCG  ,Household Consumer Goods                          
+Consumer Goods,Jewelry,JLR  ,Jewelry                                           
+Consumer Goods,Pet Foods & Supplies,PET  ,Pet Foods/Supp.                                   
+Consumer Goods,Sporting Goods & Recreational Equipment,SPT  ,Sporting Goods/Recreational Eq.                   
+Consumer Goods,Toys & Games,TOY  ,Toys/Games                                        
+Consumer Goods,General,GCG  ,General Consumer Goods                            
+Energy & Mining,Coal,COL  ,Coal                                              
+Energy & Mining,Electrical Power Systems,ELP  ,Electrical Power Systems                          
+Energy & Mining,Mining Industry Equipment,MIN  ,Mining Industry Eq.                               
+Energy & Mining,Oil & Gas Field Machinery,OGM  ,Oil/Gas Field Machinery                           
+Energy & Mining,"Oil, Gas & Mineral Production & Exploration Services",OGS  ,Oil/Gas/Mineral Prod/Explor Serv.                 
+Environmental Industries,Pollution Control Equipment,POL  ,Pollution Control Eq.                             
+Environmental Industries,Renewable Energy Equipment,REQ  ,Renewable Energy Eq.                              
+Environmental Industries,Water Resources Equipment & Services,WRE  ,Water Resources Eq./Services                      
+Environmental Industries,General,EVT  ,Environmental Technologies                        
+Financial Services ,Accounting Services,ACT  ,Accounting Services                               
+Financial Services ,Insurance Services,INS  ,Insurance Services                                
+Financial Services ,Investment Services,INV  ,Investment Services                               
+Financial Services ,Leasing Services,LES  ,Leasing Services                                  
+Financial Services ,General,FNS  ,Financial Services                                
+Food Processing & Packaging,Food Processing & Packaging Equipment,FPP  ,Food Processing/Packaging Eq.                     
+Food Processing & Packaging,Marine Fisheries Products (Seafood)               ,MFI  ,Marine Fisheries Products (Seafood)               
+Food Processing & Packaging,Processed Foods,FOD  ,Foods - Processed                                 
+Franchising,General,FRA  ,Franchising                                       
+"Healthcare, Biotechnology & Pharmaceuticals",Biotechnology,BTC  ,Biotechnology                                     
+"Healthcare, Biotechnology & Pharmaceuticals",Dental Equipment,DNT  ,Dental Eq.                                        
+"Healthcare, Biotechnology & Pharmaceuticals",Health Care Services,HCS  ,Health Care Services                              
+"Healthcare, Biotechnology & Pharmaceuticals",Medical Equipment,MED  ,Medical Eq.                                       
+"Healthcare, Biotechnology & Pharmaceuticals",Pharmaceuticals,DRG  ,Drugs/Pharmaceuticals                             
+Industrial Machinery & Equipment,Business Equipment (Non-Computer),BUS  ,Business Eq. (Non-Computer)                       
+Industrial Machinery & Equipment,Electronic Components                             ,ELC  ,Electronic Components                             
+Industrial Machinery & Equipment,Electronics Industry Production & Testing Equipment                ,EIP  ,Electronics Industry Prod/Test Eq.
+Industrial Machinery & Equipment,General Industrial Equipment & Supplies                  ,GIE  ,General Industrial Eq./Supplies
+Industrial Machinery & Equipment,Laboratory Scientific Instruments                 ,LAB  ,Laboratory Scientific Instruments                 
+Industrial Machinery & Equipment,Machine Tools and Metalworking Equipment                    ,MTL  ,Machine Tools/Metalworking Eq.
+Industrial Machinery & Equipment,Materials Handling Machinery                      ,MHM  ,Materials Handling Machinery                      
+Industrial Machinery & Equipment,Packaging Equipment                                    ,PKG  ,Packaging Eq.                                     
+Industrial Machinery & Equipment,Process Controls - Industrial                     ,PCI  ,Process Controls - Industrial                     
+Industrial Machinery & Equipment,"Pumps, Valves & Compressors                          ",PVC  ,Pumps/Valves/Compressors                          
+Industrial Machinery & Equipment,Robotics                                          ,ROB  ,Robotics                                          
+Industrial Machinery & Equipment,Tools - Hand and Power                                ,TLS  ,Tools - Hand/Power                                
+Industrial Machinery & Equipment,Used & Reconditioned Equipment                            ,USD  ,Used/Reconditioned Eq.
+Industrial Materials,Ceramics,CRM  ,Advanced Ceramics                                 
+Industrial Materials,Composites,CMT  ,Composite Materials                               
+Industrial Materials,Metals,IRN  ,Iron/Steel                                        
+Industrial Materials,Metals,NFM  ,Non-Ferrous Metals                                
+Industrial Materials,Paper,PUL  ,Pulp/Paper Machinery                              
+Industrial Materials,Paper,PAP  ,Paper/Paperboard                                  
+Industrial Materials,Plastics,PME  ,Plastics Production Machinery                     
+Industrial Materials,Plastics,PMR  ,Plastics Materials/Resins                         
+Information Technology & Services,Computer Services                                 ,CSV  ,Computer Services                                 
+Information Technology & Services,Computer Software                                 ,CSF  ,Computer Software                                 
+Information Technology & Services,Computers & Peripherals                            ,CPT  ,Computers/Peripherals                             
+Information Technology & Services,Electronic Commerce                               ,ECC  ,Electronic Commerce                               
+Information Technology & Services,Information Services                              ,INF  ,Information Services                              
+Information Technology & Services,Telecommunications Equipment                            ,TEL  ,Telecommunications Eq.
+Information Technology & Services,Telecommunications Services                       ,TES  ,Telecommunications Services                       
+Marine Industries,Commercial Fishing Equipment,CFE  ,Commercial Fishing Eq.                            
+Marine Industries,Commercial Vessel Equipment (Non-Fisheries),CVR  ,Commercial Vessel/Eq. (Non-Fisheries)             
+Marine Industries,Pleasure Boats & Accessories,PLB  ,Pleasure Boats/Accessories                        
+Marine Industries,Port & Shipbuilding Equipment,PRT  ,Port/Shipbuilding Eq.                             
+Public Administration,Economy,ZEC  ,Economy                                           
+Public Administration,Regulations,ZRG  ,Regulations                                       
+Security & Safety ,General,SEC  ,Security/Safety Eq.                               
+Textiles & Apparel,Apparel,APP  ,Apparel                                           
+Textiles & Apparel,Footwear,FOT  ,Footwear                                          
+Textiles & Apparel,Leather & Fur Products,LFP  ,Leather/Fur Products                              
+Textiles & Apparel,Textile Fabrics,TXF  ,Textile Fabrics                                   
+Textiles & Apparel,Textile Machinery & Equipment,TXM  ,Textile Machinery/Eq.                             
+Textiles & Apparel,Textile Products (Made-Up),TXP  ,Textile Products - Made-Up                        
+Textiles & Apparel,Yarns,YAR  ,Yarns                                             
+"Travel, Tourism & Hospitality",Hotel & Restaurant Equipment,HTL  ,Hotel/Restaurant Eq.                              
+"Travel, Tourism & Hospitality",General,TRA  ,Travel and Tourism Industries                     

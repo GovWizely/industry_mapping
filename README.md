@@ -14,7 +14,8 @@ We use bundler to manage gems. You can install bundler and other required gems l
 
 ### MySQL
 
-The database.yml file assumes you have a local [MySQL](http://www.mysql.com/) instance up and running, accessible from user 'root' with no password.
+Copy and modify the database.yml file as needed. The provided database.yml.example file assumes you have
+a local [MySQL](http://www.mysql.com/) instance up and running, accessible from user 'root' with no password.
 
 Create and setup your development and test databases and populate them with the seed data:
 

@@ -43,6 +43,12 @@ end
 
 group :development do
   gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+end
+
+group :assets do
+  gem 'therubyracer'
 end
 
 # Use debugger

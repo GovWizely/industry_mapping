@@ -29,5 +29,4 @@ end
 #end
 
 
-server 'api.trade.gov', roles: %w{web app}
-server 'webservices.cqwhysjxufjv.us-west-2.rds.amazonaws.com', roles: %w{db}
+server 'api.trade.gov', roles: %w{web app db}

@@ -16,5 +16,18 @@ set :ssh_options, { forward_agent: true }
 #  end
 #  after 'deploy:restart', 'deploy:notify_newrelic'
 #end
+namespace :deploy do
+  namespace :check do
+    task :linked_files => 'config/database.yml'
+  end
+end
+#
+#before 'deploy:assets:precompile', 'production_specific_files'
+#
+#task :production_specific_files, :except => { :no_release => true } do
+#  run "cp #{shared_path}/system/database.yml #{release_path}/config/database.yml"
+#end
+
 
 server 'api.trade.gov', roles: %w{web app}
+server 'webservices.cqwhysjxufjv.us-west-2.rds.amazonaws.com', roles: %w{db}

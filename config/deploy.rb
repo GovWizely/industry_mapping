@@ -1,5 +1,6 @@
 set :application, 'industry_mapping'
 set :repo_url, 'git@github.com:InternationalTradeAdministration/industry_mapping.git'
+set :linked_files, %w{config/database.yml}
 
 ask :branch, 'master'
 

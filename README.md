@@ -3,7 +3,7 @@ trade.gov Industry Mapper
 
 ### Ruby
 
-You'll need [Ruby 2.0](http://www.ruby-lang.org/en/downloads/) and Rails 4.
+You'll need [Ruby 2.1](http://www.ruby-lang.org/en/downloads/) and Rails 4.
 
 ### Gems
 

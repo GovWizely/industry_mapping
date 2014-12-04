@@ -10,7 +10,7 @@ ActiveAdmin.register Sector do
       end
       links.join(', ').html_safe
     end
-    default_actions
+    actions
   end
 
   controller do

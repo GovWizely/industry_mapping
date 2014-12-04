@@ -5,6 +5,6 @@ ActiveAdmin.register Emenu do
     column :name
     column :updated_at
     column :sector
-    default_actions
+    actions
   end
 end

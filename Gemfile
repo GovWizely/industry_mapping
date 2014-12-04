@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+gem 'devise'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'

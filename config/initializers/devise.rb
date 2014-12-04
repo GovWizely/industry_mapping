@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = '9141f9ea3d917053d63a7975d33393705f16739e0ae0c8355dee7ed6347077c18a8e494e34dd3f7275aee137ef30455e7e19e062bb59badf62c4af55f9ec7f53'
+  config.secret_key = Rails.application.secrets.secret_key_base
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

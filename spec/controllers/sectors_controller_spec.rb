@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SectorsController, :lookup do
+describe SectorsController, type: :controller do
   fixtures :emenus, :sectors, :industries
   render_views
   let(:emenu) { emenus(:german) }

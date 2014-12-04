@@ -24,6 +24,11 @@ Create and setup your development and test databases and populate them with the 
     rake db:seed
     rake db:setup RAILS_ENV=test
 
+To create an admin user, use the rails console:
+
+    $ rails c
+    > AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
+
 ### Running it
 
 Fire up a server and try it all out.

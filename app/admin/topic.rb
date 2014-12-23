@@ -1,4 +1,4 @@
-ActiveAdmin.register Emenu do
+ActiveAdmin.register Topic do
   menu :priority => 100
   permit_params :name, :sector_id
   index do

@@ -2,5 +2,8 @@ IndustryMapping::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "home#index"
-  get "industry_sector(.json)" => "sectors#lookup", defaults: { format: :json }
+
+  scope "api" do
+    get ":model(.json)" => "search#lookup_by_topic", defaults: { format: :json }
+  end
 end

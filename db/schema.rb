@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127174508) do
+ActiveRecord::Schema.define(version: 20141223093822) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,16 +46,6 @@ ActiveRecord::Schema.define(version: 20131127174508) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "emenus", force: true do |t|
-    t.integer  "sector_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "emenus", ["name"], name: "index_emenus_on_name", unique: true, using: :btree
-  add_index "emenus", ["sector_id"], name: "index_emenus_on_sector_id", using: :btree
-
   create_table "industries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -70,5 +60,21 @@ ActiveRecord::Schema.define(version: 20131127174508) do
   end
 
   add_index "sectors", ["industry_id"], name: "index_sectors_on_industry_id", using: :btree
+
+  create_table "sources", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topics", force: true do |t|
+    t.integer  "sector_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "source_id",  null: false
+  end
+
+  add_index "topics", ["source_id", "name"], name: "index_topics_on_source_id_and_name", unique: true, using: :btree
 
 end

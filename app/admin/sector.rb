@@ -4,9 +4,9 @@ ActiveAdmin.register Sector do
     column :name
     column :updated_at
     column :industry
-    column :emenus do |sector|
-      links = sector.emenus.collect do |emenu|
-        link_to emenu.name, admin_emenu_path(emenu)
+    column :topics do |sector|
+      links = sector.topics.collect do |topic|
+        link_to topic.name, admin_topic_path(topic)
       end
       links.join(', ').html_safe
     end
@@ -15,7 +15,7 @@ ActiveAdmin.register Sector do
 
   controller do
     def scoped_collection
-      Sector.includes(:emenus)
+      Sector.includes(:topics)
     end
   end
 
@@ -27,10 +27,10 @@ ActiveAdmin.register Sector do
       row :updated_at
       row :created_at
     end
-    panel "Emenus" do
-      table_for sector.emenus do
-        column "emenu name" do |emenu|
-          link_to emenu.name, admin_emenu_path(emenu)
+    panel "Topics" do
+      table_for sector.topics do
+        column "topic name" do |topic|
+          link_to topic.name, admin_topic_path(topic)
         end
       end
     end

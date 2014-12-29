@@ -14,10 +14,7 @@ We use bundler to manage gems. You can install bundler and other required gems l
 
 ### MySQL
 
-Copy and modify the database.yml file as needed. The provided database.yml.example file assumes you have
-a local [MySQL](http://www.mysql.com/) instance up and running, accessible from user 'root' with no password.
-
-Create and setup your development and test databases and populate them with the seed data:
+Follow the instructions in config/database.yml, then set up your development/test databases and populate them with seed data:
 
     rake db:create
     rake db:migrate

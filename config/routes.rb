@@ -3,7 +3,9 @@ IndustryMapping::Application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => "home#index"
 
-  scope "api" do
-    get ":model(.json)" => "search#lookup_by_topic", defaults: { format: :json }
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1 do
+      resources :industries, only: :index
+    end
   end
 end

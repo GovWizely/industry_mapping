@@ -10,14 +10,14 @@ describe SectorsController, type: :controller do
       get :lookup, emenu: emenu.name, format: :json
     end
 
-    it { should respond_with(:success) }
+    it { is_expected.to respond_with(:success) }
 
-    it 'should have correct JSON in response' do
+    it 'has correct JSON in response' do
       json_response = JSON.parse(response.body)
-      json_response['industry_id'].should == emenu.sector.industry.id
-      json_response['industry_name'].should == emenu.sector.industry.name
-      json_response['sector_id'].should == emenu.sector.id
-      json_response['sector_name'].should == emenu.sector.name
+      expect(json_response['industry_id']).to eq(emenu.sector.industry.id)
+      expect(json_response['industry_name']).to eq(emenu.sector.industry.name)
+      expect(json_response['sector_id']).to eq(emenu.sector.id)
+      expect(json_response['sector_name']).to eq(emenu.sector.name)
     end
   end
 
@@ -26,7 +26,7 @@ describe SectorsController, type: :controller do
       get :lookup, emenu: 'unknown!', format: :json
     end
 
-    it { should respond_with(:missing) }
+    it { is_expected.to respond_with(:missing) }
 
   end
 

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe Emenu do
-  it { should belong_to :sector }
+  it { is_expected.to belong_to(:sector) }
 end

@@ -18,8 +18,8 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Emenus" do
-          link_to Emenu.count, admin_emenus_path
+        panel "Topics" do
+          link_to Topic.count, admin_topics_path
         end
       end
 

@@ -24,6 +24,7 @@ gem 'turbolinks'
 gem 'activeadmin', github: 'activeadmin'
 
 gem 'devise'
+gem 'google_drive'
 
 group :development, :test do
   gem 'rspec-rails'

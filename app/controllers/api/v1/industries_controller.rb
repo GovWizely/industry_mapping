@@ -12,6 +12,10 @@ module Api
       def find_industries
         return Industry.all if params[:source].nil? && params[:topic].nil?
 
+        if params[:source] && params[:topic] && params[:log_failed]
+
+        end
+
         source = Source.find_by(name: params[:source]) if params[:source].present?
 
         return Industry.none if params[:source].present? && source.nil?

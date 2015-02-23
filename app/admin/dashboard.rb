@@ -6,6 +6,14 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
+        panel "Failed Lookups" do
+          link_to Topic.where(sector: nil).count, admin_topics_path(q: {sector_id_null: true})
+        end
+      end
+    end
+
+    columns do
+      column do
         panel "Industries" do
           link_to Industry.count, admin_industries_path
         end

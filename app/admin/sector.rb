@@ -34,7 +34,6 @@ ActiveAdmin.register Sector do
         end
       end
     end
-    active_admin_comments
   end
 
 

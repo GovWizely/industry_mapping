@@ -4,5 +4,5 @@ class Topic < ActiveRecord::Base
   has_one :industry, through: :sector
 
   validates :source, presence: true
-  validates :name, uniqueness: { scope: :source_id }
+  validates :name, presence: true, uniqueness: { scope: :source }
 end

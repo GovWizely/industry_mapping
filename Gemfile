@@ -30,6 +30,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'thin'
   gem 'pry-byebug'
+  gem 'factory_girl_rails'
 end
 
 group :doc do

@@ -1,10 +1,8 @@
 require 'spec_helper'
 
-describe Source, type: :model do
+describe Source do
   it { is_expected.to have_many(:topics) }
 
-  it "has unique name" do
-    Source.create(name: "Blah")
-    expect( Source.new(name: "Blah") ).to_not be_valid
-  end
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_uniqueness_of(:name) }
 end

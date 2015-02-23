@@ -5,19 +5,18 @@ describe Topic do
   it { is_expected.to belong_to(:source) }
   it { is_expected.to have_one(:industry).through(:sector) }
 
-  describe 'validations' do
-    let(:source) { Source.create( name: "Blah 2" ) }
-    let(:source2) { Source.create( name: "Blah 3" ) }
+  it { is_expected.to validate_presence_of(:source) }
+  it { is_expected.to validate_presence_of(:name) }
 
-    it "is valid if 'name-source' is not duplicated" do
-      Topic.create(name: "Blah", source: source )
-      expect( Topic.new(name: "Blah", source: source2 ) ).to be_valid
-      expect( Topic.new(name: "Foo", source: source ) ).to be_valid
-    end
+  describe 'uniqueness validation' do
+    let(:source1) { create(:source) }
+    let(:source2) { create(:source) }
+    let!(:topic) { create(:topic, name: 'Foo', source: source1) }
 
-    it "is not valid if 'name-source' is duplicated" do
-      Topic.create(name: "Blah", source: source )
-      expect( Topic.new(name: "Blah", source: source ) ).to_not be_valid
+    it 'enforces uniqueness scoped to source' do
+      expect(build(:topic, name: 'Bar', source: source1)).to be_valid
+      expect(build(:topic, name: 'Foo', source: source2)).to be_valid
+      expect(build(:topic, name: 'Foo', source: source1)).to_not be_valid
     end
   end
 end

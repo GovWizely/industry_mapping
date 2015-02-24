@@ -1,14 +1,13 @@
 require 'spec_helper'
 
 describe Api::V1::IndustriesController, type: :controller do
-  fixtures :topics, :sectors, :industries, :sources
   render_views
-  let(:topic) { topics(:german) }
+
+  let!(:topic) { create(:topic, name: 'German Cars') }
 
   context 'when endpoint is unknown' do
-    before do
-      get :index, topic: 'unknown!'
-    end
+    before { get :index, topic: 'unknown!' }
+
     it { is_expected.to respond_with(:success) }
 
     it 'has no industries in response' do
@@ -20,9 +19,7 @@ describe Api::V1::IndustriesController, type: :controller do
   describe 'industries endpoint' do
     context 'when only topic param is present' do
       context 'and is right name' do
-        before do
-          get :index, topic: topic.name
-        end
+        before { get :index, topic: topic.name }
 
         it { is_expected.to respond_with(:success) }
 
@@ -34,9 +31,7 @@ describe Api::V1::IndustriesController, type: :controller do
       end
 
       context 'and wrong name' do
-        before do
-          get :index, topic: 'unknown!'
-        end
+        before { get :index, topic: 'unknown!' }
 
         it { is_expected.to respond_with(:success) }
 
@@ -46,21 +41,14 @@ describe Api::V1::IndustriesController, type: :controller do
         end
       end
       it "does not change Topic number" do
-        expect {
-          get :index, topic: topic.name
-        }.to_not change{ Topic.count }
-
-        expect {
-          get :index, topic: 'unknown!'
-        }.to_not change{ Topic.count }
+        expect { get :index, topic: topic.name }.to_not change{ Topic.count }
+        expect { get :index, topic: 'unknown!' }.to_not change{ Topic.count }
       end
     end
 
     context 'when topic param and source are present' do
       context 'and are right named' do
-        before do
-          get :index, topic: topic.name, source: topic.source.name
-        end
+        before { get :index, topic: topic.name, source: topic.source.name }
 
         it { is_expected.to respond_with(:success) }
 

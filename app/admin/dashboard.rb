@@ -23,6 +23,12 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
 
+      column do
+        panel "Sources" do
+          link_to Source.count, admin_sources_path
+        end
+      end
+
     end
   end # content
 end

@@ -1,40 +1,38 @@
-ActiveAdmin.register Sector do
-  permit_params :name, :industry_id
+ActiveAdmin.register Source do
+  permit_params :name
+
   index do
     column :name
     column :updated_at
-    column :industry
-    column :topics do |sector|
-      links = sector.topics.collect do |topic|
+    column :topics do |source|
+      links = source.topics.order(:name).first(10).collect { |topic|
         link_to topic.name, admin_topic_path(topic)
-      end
-      links.join(', ').html_safe
+      }.join(', ')
+      links.concat(', ...') if source.topics.count > 10
+      links.html_safe
     end
     actions
   end
 
   controller do
     def scoped_collection
-      Sector.includes(:topics)
+      Source.includes(:topics)
     end
   end
 
-  show do |sector|
+  show do |source|
     attributes_table do
       row :id
-      row :industry
       row :name
       row :updated_at
       row :created_at
     end
     panel "Topics" do
-      table_for sector.topics do
+      table_for source.topics do
         column "topic name" do |topic|
           link_to topic.name, admin_topic_path(topic)
         end
       end
     end
   end
-
-
 end

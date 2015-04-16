@@ -41,7 +41,7 @@ From there, you can see the industries and the sectors each one contains, and fo
 
 Now try a lookup:
 
-<http://localhost:3000/industry_sector.json?emenu=Construction+Eq.>
+<http://localhost:3000/api/industries.json?topic=Artwork&source=MarketResearch>
 
 ### Tests
 

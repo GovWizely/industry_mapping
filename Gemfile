@@ -24,6 +24,8 @@ gem 'turbolinks'
 gem 'activeadmin', github: 'activeadmin'
 
 gem 'devise'
+gem 'nokogiri'
+gem 'rubyzip'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -9,3 +9,4 @@ CSV.foreach("#{Rails.root}/lib/data/industry_taxonomy.csv", :headers => :first_r
   sector = industry.sectors.find_or_create_by!(name: sector_name)
   sector.topics.find_or_create_by!(name: topic_name, source: source)
 end
+

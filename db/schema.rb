@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141223093822) do
 
   create_table "industries", force: true do |t|
     t.string   "name"
+    t.string   "protege_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20141223093822) do
   create_table "sectors", force: true do |t|
     t.integer  "industry_id"
     t.string   "name"
+    t.string   "protege_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

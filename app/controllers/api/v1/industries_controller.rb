@@ -12,8 +12,10 @@ module Api
       def find_industries
         return Industry.all if params[:source].nil? && params[:topic].nil?
 
-        if params[:source] && params[:topic] && params[:log_failed]
-
+        if log_new_topic?
+          topic = Topic.create(name: params[:topic])
+          source = Source.find_or_create_by(name: params[:source])
+          source.topics << topic
         end
 
         source = Source.find_by(name: params[:source]) if params[:source].present?
@@ -24,6 +26,13 @@ module Api
         filters[:source_id] = source.id if source.present?
         filters[:name] = params[:topic] if params[:topic].present?
         Industry.joins(sectors: :topics).where(topics: filters)
+      end
+
+      def log_new_topic?
+        params[:source] &&
+          params[:topic] &&
+          params[:log_failed] &&
+          Topic.find_by(name: params[:topic]).blank?
       end
     end
   end

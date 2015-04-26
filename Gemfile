@@ -46,6 +46,7 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
+  gem 'rubocop', require: false
 end
 
 group :assets do

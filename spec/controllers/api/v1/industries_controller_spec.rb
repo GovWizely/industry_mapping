@@ -110,6 +110,16 @@ describe Api::V1::IndustriesController, type: :controller do
       end
 
       context 'when source already exists' do
+        let(:topic) { create(:topic, sector: nil, industry: nil) }
+        let(:query) { {source: topic.source.name, topic: topic.name, log_failed: 'true'} }
+        before { get_index }
+        it { expect(json_response.count).to eq(0) }
+        subject { Source.find_by(name: topic.source.name) }
+        it { expect(subject).to be }
+        subject { Topic.find_by(name: topic.name, source: topic.source) }
+        it { expect(subject).to be }
+        it { expect(subject.sector).to be_nil }
+        it { expect(subject.industry).to be_nil }
       end
     end
   end

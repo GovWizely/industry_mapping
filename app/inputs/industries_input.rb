@@ -4,10 +4,6 @@ class IndustriesInput < Formtastic::Inputs::SelectInput
   # the superclass:
   #builder.select(input_name, collection, input_options, input_html_options)
 
-  def collection
-    Industry.all.map { |i| [i.name, i.id] }
-  end
-
   def input_name
     :industry
   end
@@ -15,5 +11,4 @@ class IndustriesInput < Formtastic::Inputs::SelectInput
   def input_html_options
     super.merge(:name => "industry", :id => 'industry')
   end
-
 end

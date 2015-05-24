@@ -16,9 +16,9 @@ ActiveAdmin.register Topic do
 
   form do |f|
     f.inputs do
-      input :industry, as: :industries
+      input :industry, as: :industries, collection: options_for_select(Industry.all.map { |i| [i.name, i.id] }, resource.industry.try(:id))
       input :sector,
-            as:         :select,
+            as: :select,
             input_html: {
               'data-option-dependent' => true,
               'data-option-url'       => '/industries/:industry/sectors',

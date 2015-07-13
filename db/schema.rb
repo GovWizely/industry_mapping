@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223093822) do
+ActiveRecord::Schema.define(version: 20150713193630) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -48,17 +48,17 @@ ActiveRecord::Schema.define(version: 20141223093822) do
 
   create_table "industries", force: true do |t|
     t.string   "name"
-    t.string   "protege_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "protege_id"
   end
 
   create_table "sectors", force: true do |t|
     t.integer  "industry_id"
     t.string   "name"
-    t.string   "protege_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "protege_id"
   end
 
   add_index "sectors", ["industry_id"], name: "index_sectors_on_industry_id", using: :btree

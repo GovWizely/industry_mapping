@@ -16,7 +16,7 @@ class ProtegeImporter
     xml = extract_xml_from_zip
     parse_terms_from_xml(xml)
 
-    @all_terms.each { |term| @industry_terms.push(term) if validate_industries_term(term) }
+    @all_terms.each { |term| @industry_terms.push(term) if term_in_industries_taxonomy?(term) }
     extract_industries_and_sectors
     @sectors = find_parent_industries
 
@@ -75,14 +75,14 @@ class ProtegeImporter
     end
   end
 
-  def validate_industries_term(term)
+  def term_in_industries_taxonomy?(term)
     if term[:parent_ids].include? @root_term[:protege_id]
       return true
     elsif ['skos:Concept', 'Concept Scheme', 'Collection'].include?(term[:name]) || term[:parent_ids] == []
       return false
     else
       @all_terms.each do |t|
-        return validate_industries_term(t) if term[:parent_ids].include?(t[:protege_id])
+        return term_in_industries_taxonomy?(t) if term[:parent_ids].include?(t[:protege_id])
       end
     end
   end

@@ -1,22 +1,26 @@
 require 'spec_helper'
 
 describe ProtegeImporter do
-  let(:fixtures_dir) { "#{Rails.root}/spec/fixtures/protege_importer" }
-  let(:resource) { "#{fixtures_dir}/test_data.zip" }
-  let(:importer) { ProtegeImporter.new(resource) }
-
   describe '#import' do
-    let(:entry_hash) { YAML.load_file("#{fixtures_dir}/results.yaml") }
+    
+    before(:all) do
+      Sector.destroy_all
+      Industry.destroy_all
+      fixtures_dir = "#{Rails.root}/spec/fixtures/protege_importer" 
+      resource = "#{fixtures_dir}/test_data.zip" 
+      importer = ProtegeImporter.new(resource)
+      @entry_hash = YAML.load_file("#{fixtures_dir}/results.yaml")
 
-    let(:old_industry) { build(:industry) }
-    let(:old_sector) { build(:sector) }
-    let(:updateable_industry) { build(:industry, name: entry_hash[0]["name"], protege_id: entry_hash[0]["protege_id"]) }
-    let(:updateable_sector) { build(:sector, name: entry_hash[1]["name"], protege_id: entry_hash[1]["protege_id"], industry: updateable_industry) }
+      deletable_industry = create(:industry)
+      updateable_industry = create(:industry, name: @entry_hash[0]["name"], protege_id: @entry_hash[0]["protege_id"])
+      updateable_sector = create(:sector, name: @entry_hash[1]["name"], protege_id: @entry_hash[1]["protege_id"], industry: updateable_industry)
+      deletable_sector = create(:sector, industry: updateable_industry)
 
-    before { importer.import }
-
-    let(:industry) { Industry.all[0].attributes }
-    let(:sector1) { Sector.all[0].attributes }
+      importer.import
+ 
+      @industry = Industry.all[0].attributes
+      @sector1 = Sector.all[0].attributes
+    end
 
     it 'creates the correct number of Active Record Industries and Sectors' do
       expect(Industry.count).to eq(2)
@@ -24,17 +28,17 @@ describe ProtegeImporter do
     end
 
     it 'create the correct names and protege_ids for an Industry' do
-      expect(industry["name"]).to eq(entry_hash[0]["name"])
-      expect(industry["protege_id"]).to eq(entry_hash[0]["protege_id"])
+      expect(@industry["name"]).to eq(@entry_hash[0]["name"])
+      expect(@industry["protege_id"]).to eq(@entry_hash[0]["protege_id"])
     end
       
     it 'creates the correct names and protege_ids for a Sector' do
-      expect(sector1["name"]).to eq(entry_hash[1]["name"])
-      expect(sector1["protege_id"]).to eq(entry_hash[1]["protege_id"])
+      expect(@sector1["name"]).to eq(@entry_hash[1]["name"])
+      expect(@sector1["protege_id"]).to eq(@entry_hash[1]["protege_id"])
     end
 
     it 'create the correct industry_id for a Sector' do
-      expect(sector1["industry_id"]).to eq(industry["id"])
+      expect(@sector1["industry_id"]).to eq(@industry["id"])
     end
 
   end

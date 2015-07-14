@@ -16,10 +16,8 @@ We use bundler to manage gems. You can install bundler and other required gems l
 
 Follow the instructions in config/database.yml, then set up your development/test databases and populate them with seed data:
 
-    rake db:create
-    rake db:migrate
-    rake db:seed
-    rake db:setup RAILS_ENV=test
+    rake db:setup
+    RAILS_ENV=test rake db:setup
 
 To create an admin user, use the rails console:
 

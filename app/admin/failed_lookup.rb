@@ -1,7 +1,8 @@
 ActiveAdmin.register Topic, as: 'FailedLookup' do
-  menu label: proc { "Failed Lookups [#{ Topic.where(sector: nil).count }]" }, priority: 1337
+  menu label: proc { "Failed Lookups [#{ Topic.includes(:sectors, :industries).where('sectors.id' => nil, 'industries.id' => nil).count }]" }, priority: 1337
 
   actions :index
+  remove_filter :industry_sector_topics
 
   index do
     column :name
@@ -13,7 +14,7 @@ ActiveAdmin.register Topic, as: 'FailedLookup' do
 
   controller do
     def scoped_collection
-      Topic.where(sector: nil)
+      Topic.includes(:sectors, :industries).where('sectors.id' => nil, 'industries.id' => nil)
     end
   end
 end

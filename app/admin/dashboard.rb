@@ -7,7 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Failed Lookups" do
-          link_to Topic.where(sector: nil).count, admin_failed_lookups_path
+          link_to Topic.includes(:sectors, :industries).where('sectors.id' => nil, 'industries.id' => nil).count, admin_failed_lookups_path
         end
       end
     end

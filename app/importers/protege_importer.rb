@@ -53,15 +53,23 @@ class ProtegeImporter
 
   def update_or_add_sectors
     @sectors.each do |term|
-      term[:industry_ids].each do |industry_id|  
-        industry = Industry.find_by(protege_id: industry_id)
-        if industry.sectors.exists?(protege_id: term[:protege_id])
-          sector = industry.sectors.find_by(protege_id: term[:protege_id])
-          sector.update(name: term[:name])
-        else
-          sector = industry.sectors.create(protege_id: term[:protege_id], name: term[:name])
-        end
+      if Sector.exists?(protege_id: term[:protege_id])
+        sector = Sector.find_by(protege_id: term[:protege_id])
+        sector.update(name: term[:name])
+      else
+        sector = Sector.create(protege_id: term[:protege_id], name: term[:name])
       end
+
+      update_or_add_industry_and_sector_mappings(term)
+    end
+  end
+
+  def update_or_add_industry_and_sector_mappings(term)
+    term[:industry_ids].each do |industry_id|  
+      sector = Sector.find_by(protege_id: term[:protege_id])
+      industry = Industry.find_by(protege_id: industry_id)
+      sector.industries << industry unless sector.industries.include?(industry)
+      industry.sectors << sector unless industry.sectors.include?(sector)
     end
   end
 

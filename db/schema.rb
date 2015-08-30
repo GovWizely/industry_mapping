@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713193630) do
+ActiveRecord::Schema.define(version: 20150825142429) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -53,15 +53,29 @@ ActiveRecord::Schema.define(version: 20150713193630) do
     t.string   "protege_id"
   end
 
+  create_table "industry_sector_topics", id: false, force: true do |t|
+    t.integer "industry_id"
+    t.integer "sector_id"
+    t.integer "topic_id"
+  end
+
+  add_index "industry_sector_topics", ["industry_id"], name: "index_industry_sector_topics_on_industry_id", using: :btree
+  add_index "industry_sector_topics", ["topic_id"], name: "index_industry_sector_topics_on_topic_id", using: :btree
+
+  create_table "industry_sectors", id: false, force: true do |t|
+    t.integer "industry_id"
+    t.integer "sector_id"
+  end
+
+  add_index "industry_sectors", ["industry_id"], name: "index_industry_sectors_on_industry_id", using: :btree
+  add_index "industry_sectors", ["sector_id"], name: "index_industry_sectors_on_sector_id", using: :btree
+
   create_table "sectors", force: true do |t|
-    t.integer  "industry_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "protege_id"
   end
-
-  add_index "sectors", ["industry_id"], name: "index_sectors_on_industry_id", using: :btree
 
   create_table "sources", force: true do |t|
     t.string   "name"
@@ -70,7 +84,6 @@ ActiveRecord::Schema.define(version: 20150713193630) do
   end
 
   create_table "topics", force: true do |t|
-    t.integer  "sector_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

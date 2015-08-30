@@ -25,7 +25,7 @@ module Api
         filters = {}
         filters[:source_id] = source.id if source.present?
         filters[:name] = params[:topic] if params[:topic].present?
-        Industry.joins(sectors: :topics).where(topics: filters)
+        Industry.joins(:topics).where(topics: filters)
       end
 
       def log_new_topic?

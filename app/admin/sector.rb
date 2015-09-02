@@ -1,5 +1,5 @@
 ActiveAdmin.register Sector do
-  permit_params :name, industry_ids: []
+  permit_params :name, :protege_id, industry_ids: []
   remove_filter :industry_sectors
   remove_filter :industry_sector_topics
 
@@ -57,6 +57,7 @@ ActiveAdmin.register Sector do
   form do |f|
     f.inputs "Sector" do
       f.input :name
+      f.input :protege_id, label: "Protege ID"
     end
     f.inputs "Industries" do
       selectable_industries = Industry.all.map { |i| [i.name, i.id] }

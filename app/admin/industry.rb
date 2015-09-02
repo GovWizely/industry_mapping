@@ -1,5 +1,5 @@
 ActiveAdmin.register Industry do
-  permit_params :name
+  permit_params :name, :protege_id
   remove_filter :industry_sectors
   remove_filter :industry_sector_topics
 
@@ -37,5 +37,13 @@ ActiveAdmin.register Industry do
         end
       end
     end
+  end
+
+  form do |f|
+    f.inputs "Industry" do
+      f.input :name
+      f.input :protege_id, label: "Protege ID"
+    end
+    f.actions
   end
 end

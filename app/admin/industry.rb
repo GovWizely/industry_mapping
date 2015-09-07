@@ -1,11 +1,14 @@
 ActiveAdmin.register Industry do
-  permit_params :name
+  permit_params :name, :protege_id
+  remove_filter :industry_sectors
+  remove_filter :industry_sector_topics
 
   index do
     column :name
     column :updated_at
     column :sectors do |industry|
-      links = industry.sectors.collect do |sector|
+      sectors = Sector.includes(:industries).where('industries.id' => industry.id)
+      links = sectors.collect do |sector|
         link_to sector.name, admin_sector_path(sector)
       end
       links.join(', ').html_safe
@@ -27,11 +30,20 @@ ActiveAdmin.register Industry do
       row :created_at
     end
     panel "Sectors" do
-      table_for industry.sectors do
+      sectors = Sector.includes(:industries).where('industries.id' => industry.id)
+      table_for sectors do
         column "sector name" do |sector|
           link_to sector.name, admin_sector_path(sector)
         end
       end
     end
+  end
+
+  form do |f|
+    f.inputs "Industry" do
+      f.input :name
+      f.input :protege_id, label: "Protege ID"
+    end
+    f.actions
   end
 end

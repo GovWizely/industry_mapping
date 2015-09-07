@@ -26,6 +26,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'nokogiri'
 gem 'rubyzip'
+gem 'select2-rails'
+gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
 
 group :development, :test do
   gem 'rspec-rails'

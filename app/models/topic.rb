@@ -1,7 +1,8 @@
 class Topic < ActiveRecord::Base
-  belongs_to :sector
   belongs_to :source
-  has_one :industry, through: :sector
+  has_many :industry_sector_topics
+  has_many :sectors, through: :industry_sector_topics
+  has_many :industries, through: :industry_sector_topics
 
   validates :source, presence: true
   validates :name, presence: true, uniqueness: { scope: :source }

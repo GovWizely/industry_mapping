@@ -31,10 +31,8 @@ class ProtegeImporter
     find_parent_names
     find_child_names
 
-    update_or_add_taxonomies
-    update_or_add_terms
-    set_term_relationships
-    delete_old_terms
+    Taxonomy.update_taxonomies_from_protege(@root_terms)
+    Term.update_terms_from_protege(@processed_terms)
   end
 
   def extract_actual_taxonomy_terms
@@ -149,56 +147,6 @@ class ProtegeImporter
       parent_names = term[:parents]
       parent_terms = @processed_terms.select { |t| parent_names.include?(t[:name]) }
       parent_terms.each { |t| t[:children] << term[:name] }
-    end
-  end
-
-  # Active Record methods, might make sense to move this code to models?
-  def update_or_add_terms
-    @processed_terms.each do |term|
-      if Term.exists?(protege_id: term[:protege_id])
-        term = Term.find_by(protege_id: term[:protege_id])
-        term.update(name: term[:name])
-      else
-        term = Term.create(protege_id: term[:protege_id], name: term[:name])
-      end
-    end
-  end
-
-  def update_or_add_taxonomies
-    @root_terms.each do |term|
-      if Taxonomy.exists?(protege_id: term[:protege_id])
-        taxonomy = Taxonomy.find_by(protege_id: term[:protege_id])
-        taxonomy.update(name: term[:name])
-      else
-        taxonomy = Taxonomy.create(protege_id: term[:protege_id], name: term[:name])
-      end
-    end
-  end
-
-  def set_term_relationships
-    @processed_terms.each do |term|
-      saved_term = Term.find_by(protege_id: term[:protege_id])
-      parent_terms = term[:parents].map { |parent| Term.find_by(name: parent) }.compact
-      child_terms = term[:children].map { |child| Term.find_by(name: child) }.compact
-      taxonomies = term[:taxonomies].map { |taxonomy| Taxonomy.find_by(name: taxonomy) }.compact
-
-      saved_term.parents = parent_terms unless parent_terms.empty?
-      saved_term.children = child_terms unless child_terms.empty?
-      saved_term.taxonomies = taxonomies unless taxonomies.empty?
-    end
-  end
-
-  def delete_old_terms
-    Term.all.each do |db_term|
-      if @processed_terms.find { |protege_term| protege_term[:protege_id] == db_term.protege_id }.nil?
-        db_term.destroy
-      end
-    end
-
-    Taxonomy.all.each do |db_taxonomy|
-      if @root_terms.find { |protege_taxonomy| protege_taxonomy[:protege_id] == db_taxonomy.protege_id }.nil?
-        db_taxonomy.destroy
-      end
     end
   end
 end

@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 4.1.0'
 
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -28,10 +28,11 @@ gem 'nokogiri'
 gem 'rubyzip'
 gem 'select2-rails'
 gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
+gem 'taxonomy_parser', github: 'GovWizely/taxonomy_parser'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 3.0'
   gem 'thin'
   gem 'pry-byebug'
   gem 'factory_girl_rails'

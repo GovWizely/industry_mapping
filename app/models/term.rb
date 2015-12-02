@@ -26,18 +26,18 @@ class Term < ActiveRecord::Base
 
   def self.update_or_add_terms(processed_terms)
     processed_terms.each do |term|
-      if Term.exists?(protege_id: term[:protege_id])
-        term = Term.find_by(protege_id: term[:protege_id])
-        term.update(name: term[:name])
+      if Term.exists?(protege_id: term[:subject])
+        term = Term.find_by(protege_id: term[:subject])
+        term.update(name: term[:label])
       else
-        term = Term.create(protege_id: term[:protege_id], name: term[:name])
+        term = Term.create(protege_id: term[:subject], name: term[:label])
       end
     end
   end
 
   def self.delete_old_terms(processed_terms)
     Term.all.each do |db_term|
-      if processed_terms.find { |protege_term| protege_term[:protege_id] == db_term.protege_id }.nil?
+      if processed_terms.find { |protege_term| protege_term[:subject] == db_term.protege_id }.nil?
         db_term.destroy
       end
     end
@@ -45,14 +45,14 @@ class Term < ActiveRecord::Base
 
   def self.set_term_relationships(processed_terms)
     processed_terms.each do |term|
-      saved_term = Term.find_by(protege_id: term[:protege_id])
-      parent_terms = term[:parents].map { |parent| Term.find_by(name: parent) }.compact
-      child_terms = term[:children].map { |child| Term.find_by(name: child) }.compact
-      taxonomies = term[:taxonomies].map { |taxonomy| Taxonomy.find_by(name: taxonomy) }.compact
+      saved_term = Term.find_by(protege_id: term[:subject])
+      #parent_terms = term[:parents].map { |parent| Term.find_by(name: parent) }.compact
+      #child_terms = term[:children].map { |child| Term.find_by(name: child) }.compact
+      taxonomies = term[:concept_groups].map { |taxonomy| Taxonomy.find_by(name: taxonomy) }.compact
 
-      saved_term.parents = parent_terms unless parent_terms.empty?
-      saved_term.children = child_terms unless child_terms.empty?
-      saved_term.taxonomies = taxonomies unless taxonomies.empty?
+      #saved_term.parents = parent_terms unless parent_terms.empty?
+      #saved_term.children = child_terms unless child_terms.empty?
+      saved_term.taxonomies = taxonomies if saved_term
     end
   end
 end

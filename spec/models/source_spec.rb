@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Source do
   it { is_expected.to have_many(:mapped_terms) }

@@ -1,10 +1,31 @@
-  - name: "Industries"
-    protege_id: "http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru"
-  - name: "Countries"
-    protege_id: "http://webprotege.stanford.edu/RBNKtRqwNgoer4ubUCrN8Ae"
-  - name: "Topics"
-    protege_id: "http://webprotege.stanford.edu/RBBed4Voz7iS3nUECA3yzNM"
-  - name: "Trade Regions"
-    protege_id: "http://webprotege.stanford.edu/R7ySyiNxcfeZ6bfNjhocNun"
-  - name: "World Regions"
-    protege_id: "http://webprotege.stanford.edu/RDd8sh765VJIr3FHnmvILPS"
+---
+- id: 65
+  name: Industries
+  protege_id: http://webprotege.stanford.edu/R79uIjoQaQ9KzvJfyB1H7Ru
+  created_at: '2016-01-05T00:15:20.000Z'
+  updated_at: '2016-01-05T00:15:20.000Z'
+- id: 67
+  name: Countries
+  protege_id: http://webprotege.stanford.edu/R8W91u35GBegWcXXFflYE4
+  created_at: '2016-01-05T00:15:20.000Z'
+  updated_at: '2016-01-05T00:15:20.000Z'
+- id: 68
+  name: Sector
+  protege_id: http://webprotege.stanford.edu/RwdbpCsGlOI2iwaG4UqDl0
+  created_at: '2016-01-05T00:15:20.000Z'
+  updated_at: '2016-01-05T00:15:20.000Z'
+- id: 69
+  name: Topics
+  protege_id: http://webprotege.stanford.edu/RBBed4Voz7iS3nUECA3yzNM
+  created_at: '2016-01-05T00:15:20.000Z'
+  updated_at: '2016-01-05T00:15:20.000Z'
+- id: 70
+  name: Trade Regions
+  protege_id: http://webprotege.stanford.edu/R7ySyiNxcfeZ6bfNjhocNun
+  created_at: '2016-01-05T00:15:20.000Z'
+  updated_at: '2016-01-05T00:15:20.000Z'
+- id: 71
+  name: World Regions
+  protege_id: http://webprotege.stanford.edu/R8cndKa2D8NuNg7djwJcXxB
+  created_at: '2016-01-05T00:15:20.000Z'
+  updated_at: '2016-01-05T00:15:20.000Z'

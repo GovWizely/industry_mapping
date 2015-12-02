@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Term do
   it { is_expected.to have_and_belong_to_many(:parents) }

@@ -26,11 +26,10 @@ To create an admin user, use the rails console:
 
 ### Running it
 
-Run the importer to load all five of the taxonomies from Webprotege:
+Run the importer to load all taxonomy terms from Webprotege:
 
-    bundle exec rake protege:import['Industries','Countries','Topics','World Regions','Trade Regions']
+    bundle exec rake protege:import
     
-Specify which taxonomies to import by passing in the appropriate name.  Taxonomies not specified in the above command will be excluded, or deleted if they already exist.
 
 Fire up a server and try it all out.
 
@@ -41,7 +40,7 @@ Visit `http://localhost:3000/admin` and log in as the default user:
 * __User__: admin@example.com
 * __Password__: password
 
-From there, you can see the individual ITA taxonomy terms, the parent/child relationships between each, and the taxonomies that encapsulate the ITA terms.  You can also see mapped terms from other sources, which can be mapped onto ITA terms.
+From there, you can see the individual ITA taxonomy terms and the taxonomies that encapsulate the ITA terms.  You can also see mapped terms from other sources, which can be mapped onto ITA terms.
 
 Now try a lookup:
 

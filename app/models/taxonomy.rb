@@ -9,18 +9,18 @@ class Taxonomy < ActiveRecord::Base
 
   def self.update_or_add_taxonomies(root_terms)
     root_terms.each do |term|
-      if Taxonomy.exists?(protege_id: term[:protege_id])
-        taxonomy = Taxonomy.find_by(protege_id: term[:protege_id])
-        taxonomy.update(name: term[:name])
+      if Taxonomy.exists?(protege_id: term[:subject])
+        taxonomy = Taxonomy.find_by(protege_id: term[:subject])
+        taxonomy.update(name: term[:label])
       else
-        taxonomy = Taxonomy.create(protege_id: term[:protege_id], name: term[:name])
+        taxonomy = Taxonomy.create(protege_id: term[:subject], name: term[:label])
       end
     end
   end
 
   def self.delete_old_taxonomies(root_terms)
     Taxonomy.all.each do |db_taxonomy|
-      if root_terms.find { |protege_taxonomy| protege_taxonomy[:protege_id] == db_taxonomy.protege_id }.nil?
+      if root_terms.find { |protege_taxonomy| protege_taxonomy[:subject] == db_taxonomy.protege_id }.nil?
         db_taxonomy.destroy
       end
     end

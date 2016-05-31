@@ -4,21 +4,21 @@ ActiveAdmin.register Term do
   index do
     column :name
     column :updated_at
-    column :children do |term|
-      children = term.children
-      links = children.collect do |child|
-        link_to child.name, admin_term_path(child)
-      end
-      links.join(', ').html_safe
-    end
+    #column :children do |term|
+    #  children = term.children
+    #  links = children.collect do |child|
+    #    link_to child.name, admin_term_path(child)
+    #  end
+    #  links.join(', ').html_safe
+    #end
 
-    column :parents do |term|
-      parents = term.parents
-      links = parents.collect do |parent|
-        link_to parent.name, admin_term_path(parent)
-      end
-      links.join(', ').html_safe
-    end
+    #column :parents do |term|
+    #  parents = term.parents
+    #  links = parents.collect do |parent|
+    #    link_to parent.name, admin_term_path(parent)
+    #  end
+    #  links.join(', ').html_safe
+    #end
 
     column :taxonomies do |term|
       taxonomies = term.taxonomies
@@ -46,29 +46,29 @@ ActiveAdmin.register Term do
       row :created_at
     end
 
-    panel 'Children' do
-      children = term.children
-      table_for children do
-        column 'child name' do |child|
-          link_to child.name, admin_term_path(child)
-        end
-      end
-    end
+    #panel 'Children' do
+    #  children = term.children
+    #  table_for children do
+    #    column 'child name' do |child|
+    #      link_to child.name, admin_term_path(child)
+    #    end
+    #  end
+    #end
 
-    panel 'Parents' do
-      parents = term.parents
-      table_for parents do
-        column 'paret name' do |parent|
-          link_to parent.name, admin_term_path(parent)
-        end
-      end
-    end
+    #panel 'Parents' do
+    #  parents = term.parents
+    #  table_for parents do
+    #    column 'paret name' do |parent|
+    #      link_to parent.name, admin_term_path(parent)
+    #    end
+    #  end
+    #end
 
     panel 'Taxonomies' do
       taxonomies = term.taxonomies
       table_for taxonomies do
         column 'taxonomy name' do |taxonomy|
-          link_to taxonomy.name, admin_term_path(taxonomy)
+          link_to taxonomy.name, admin_taxonomy_path(taxonomy)
         end
       end
     end

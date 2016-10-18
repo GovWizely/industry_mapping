@@ -32,7 +32,7 @@ module Api
         params[:source] &&
           params[:mapped_term] &&
           params[:log_failed] &&
-          MappedTerm.find_by(name: params[:mapped_term]).blank?
+          MappedTerm.find_by(name: params[:mapped_term], source: params[:source]).blank?
       end
     end
   end

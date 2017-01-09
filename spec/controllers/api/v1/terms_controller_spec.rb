@@ -17,6 +17,16 @@ describe Api::V1::TermsController, type: :controller do
     @mapped_term.terms << @term
   end
 
+  context 'when Mappable Term already matches Term' do
+      let(:query) { { mapped_term: @term.name } }
+
+      it 'responds as expected' do
+        get_index
+        expect(json_response.count).to eq(1)
+        expect(json_response.first['name']).to eq(@term.name)
+      end
+  end
+
   context 'mapped_term only' do
     context 'when query matches' do
       let(:query) { { mapped_term: @mapped_term.name } }

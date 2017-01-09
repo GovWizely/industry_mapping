@@ -11,6 +11,7 @@ module Api
 
       def find_terms
         return Term.all if params[:source].nil? && params[:mapped_term].nil?
+        return [Term.find_by(name: params[:mapped_term])] if Term.find_by(name: params[:mapped_term])
 
         if log_new_mapped_term?
           mapped_term = MappedTerm.create(name: params[:mapped_term])

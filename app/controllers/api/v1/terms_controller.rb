@@ -11,7 +11,8 @@ module Api
 
       def find_terms
         return Term.all if params[:source].nil? && params[:mapped_term].nil?
-        return [Term.find_by(name: params[:mapped_term])] if Term.find_by(name: params[:mapped_term])
+        term = Term.find_by(name: params[:mapped_term])
+        return [term] if is_existing_term?(term)
 
         if log_new_mapped_term?
           mapped_term = MappedTerm.create(name: params[:mapped_term])
@@ -34,6 +35,10 @@ module Api
           params[:mapped_term] &&
           params[:log_failed] &&
           MappedTerm.find_by(name: params[:mapped_term], source: params[:source]).blank?
+      end
+
+      def is_existing_term?(term)
+        term && term.taxonomies.map{ |t| t[:name] }.include?(params[:taxonomy])
       end
     end
   end

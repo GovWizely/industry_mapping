@@ -11,20 +11,30 @@ describe Api::V1::TermsController, type: :controller do
     Source.delete_all
     Term.delete_all
     MappedTerm.delete_all
+    taxonomy = Taxonomy.create(name: 'Term Taxonomy')
     @source = Source.create(name: 'Source Name')
     @mapped_term = MappedTerm.create(name: 'First Mappable Term', source: @source)
-    @term = Term.create(name: 'Term Name', protege_id: 1337)
+    @term = Term.create(name: 'Term Name', protege_id: 1337, taxonomies: [taxonomy])
     @mapped_term.terms << @term
   end
 
-  context 'when Mappable Term already matches Term' do
-      let(:query) { { mapped_term: @term.name } }
+  context 'when Mappable Term matches Term with correct taxonomy' do
+    let(:query) { { mapped_term: @term.name, taxonomy: 'Term Taxonomy' } }
 
-      it 'responds as expected' do
-        get_index
-        expect(json_response.count).to eq(1)
-        expect(json_response.first['name']).to eq(@term.name)
-      end
+    it 'responds with term when term and taxonomy match' do
+      get_index
+      expect(json_response.count).to eq(1)
+      expect(json_response.first['name']).to eq(@term.name)
+    end
+  end
+
+  context 'when Mappable Term matches Term with incorrect taxonomy' do 
+    let(:query) { { mapped_term: @term.name, taxonomy: 'Another Taxonomy' } }
+
+    it 'does not return term if taxonomy does not match' do
+      get_index
+      expect(json_response.count).to eq(0)
+    end
   end
 
   context 'mapped_term only' do

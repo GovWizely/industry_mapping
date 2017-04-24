@@ -46,6 +46,10 @@ Now try a lookup:
 
 <http://localhost:3000/api/terms.json?mapped_term=Artwork&source=MarketResearch>
 
+A lookup on a term that already matches an existing term can bypass the mapping process, provided the `mapped_term` and `taxonomy` parameters are correct.  For example, try this lookup after loading the taxonomy:
+
+<http://localhost:3000/api/terms.json?mapped_term=Austria&source=MarketResearch&taxonomy=Countries>
+
 ### Tests
 
     bundle exec rake

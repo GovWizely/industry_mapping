@@ -18,6 +18,12 @@ class Term < ActiveRecord::Base
   validates :protege_id, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true
 
+  def as_json(options)
+    json = super(options)
+    json["taxonomies"] = self.taxonomies.map{ |t| t.name }
+    json
+  end
+
   def self.update_terms_from_protege(processed_terms)
     update_or_add_terms(processed_terms)
     delete_old_terms(processed_terms)

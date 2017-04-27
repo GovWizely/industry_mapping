@@ -18,25 +18,6 @@ describe Api::V1::TermsController, type: :controller do
     @mapped_term.terms << @term
   end
 
-  context 'when Mappable Term matches Term with correct taxonomy' do
-    let(:query) { { mapped_term: @term.name, taxonomy: 'Term Taxonomy' } }
-
-    it 'responds with term when term and taxonomy match' do
-      get_index
-      expect(json_response.count).to eq(1)
-      expect(json_response.first['name']).to eq(@term.name)
-    end
-  end
-
-  context 'when Mappable Term matches Term with incorrect taxonomy' do 
-    let(:query) { { mapped_term: @term.name, taxonomy: 'Another Taxonomy' } }
-
-    it 'does not return term if taxonomy does not match' do
-      get_index
-      expect(json_response.count).to eq(0)
-    end
-  end
-
   context 'mapped_term only' do
     context 'when query matches' do
       let(:query) { { mapped_term: @mapped_term.name } }
@@ -45,6 +26,7 @@ describe Api::V1::TermsController, type: :controller do
         get_index
         expect(json_response.count).to eq(1)
         expect(json_response.first['name']).to eq(@mapped_term.terms.first.name)
+        expect(json_response.first['taxonomies'].first).to eq(@mapped_term.terms.first.taxonomies.first.name)
       end
     end
 
@@ -69,6 +51,7 @@ describe Api::V1::TermsController, type: :controller do
           get_index
           expect(json_response.count).to eq(1)
           expect(json_response.first['name']).to eq(@mapped_term.terms.first.name)
+          expect(json_response.first['taxonomies'].first).to eq(@mapped_term.terms.first.taxonomies.first.name)
         end
       end
 
@@ -78,9 +61,13 @@ describe Api::V1::TermsController, type: :controller do
           @mapped_term2.terms << @term
           get_index
           expect(json_response.count).to eq(2)
-          expect(json_response).to match_array(
-            [@mapped_term, @mapped_term2].map { |t| { 'id' => t.terms.first.id, 'name' => t.terms.first.name } },
-          )
+          expected_array = [@mapped_term, @mapped_term2].map do |t|
+            { 'id' => t.terms.first.id, 
+              'name' => t.terms.first.name, 
+              'taxonomies' => [ t.terms.first.taxonomies.first.name ]
+            }
+          end
+          expect(json_response).to match_array(expected_array)
         end
       end
     end
